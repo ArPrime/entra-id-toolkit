@@ -24,5 +24,7 @@ This PowerShell script provides an automated solution to:
 ## Prerequisites
 
 - Microsoft.Graph PowerShell modules:
-Install-Module Microsoft.Graph.Users.Actions
-Install-Module Microsoft.Graph.Identity.SignIns
+
+  Install-Module Microsoft.Graph.Users.Actions
+
+  Install-Module Microsoft.Graph.Identity.SignIns
