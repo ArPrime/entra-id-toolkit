@@ -2,7 +2,7 @@
 
 ## Background
 
-This script is designed to help administrators bulk disable SMS sign-in for multiple users in Microsoft Entra ID (formerly Azure AD). It addresses a specific issue where users with SMS sign-in enabled are skipped during cross-tenant synchronization.
+This script extends Microsoft's official single-user SMS sign-in disable script to support bulk operations across multiple users in Microsoft Entra ID. It helps administrators efficiently handle scenarios where multiple users with SMS sign-in enabled are being skipped during cross-tenant synchronization.
 
 ## Problem Statement
 
