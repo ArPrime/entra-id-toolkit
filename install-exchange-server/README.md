@@ -7,7 +7,7 @@
 
 ## About Exchange Prerequisites Check Script
 
-The Exchange Prerequisites Check script (`Set-Exchange2019Prerequisites.ps1`) helps automate the verification and installation of required components for Exchange Server 2019/2022 deployment.
+The Exchange Prerequisites Check script (`Exchange2019-PreReqScript-1.19.ps1`) helps automate the verification and installation of required components for Exchange Server 2019/2022 deployment.
 
 ### Features
 
