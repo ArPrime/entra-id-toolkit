@@ -2,19 +2,28 @@
 Import-Module ActiveDirectory
 
 # Set parameters
-# Option 1: Using UPN
-$userIdentity = "user@domain.com"  # Replace with actual user's UPN
-# Option 2: Using DN
-# $userIdentity = "CN=,OU=,DC="
+$userUPN = "user@domain.com"  # User's UPN
+$photoPath = "C:\Users\user\Desktop\photo.png"  # Path to photo
 
-# Specify the path to the photo file
-$photoPath = "C:\Users\ray\Desktop\google.jpg"  # Replace with actual photo path
+try {
+    # First get the user object
+    $user = Get-ADUser -Filter "UserPrincipalName -eq '$userUPN'"
 
-# Read the image file into a byte array
-# The -Encoding Byte parameter ensures proper binary file reading
-$photoBytes = [byte[]](Get-Content $photoPath -Encoding Byte)
-
-# Update the user's thumbnailPhoto attribute
-Set-ADUser -Identity $userIdentity -Replace @{thumbnailPhoto=$photoBytes}
-
-Write-Host "User photo has been successfully updated"
+    if ($user) {
+        # Verify photo file exists
+        if (Test-Path $photoPath) {
+            # Read photo file into byte array
+            $photoBytes = [byte[]](Get-Content $photoPath -Encoding Byte)
+            
+            # Update user's thumbnail photo
+            Set-ADUser -Identity $user.DistinguishedName -Replace @{thumbnailPhoto=$photoBytes}
+            Write-Host "User photo has been successfully updated"
+        } else {
+            Write-Error "Photo file not found at path: $photoPath"
+        }
+    } else {
+        Write-Error "User not found with UPN: $userUPN"
+    }
+} catch {
+    Write-Error "An error occurred: $_"
+}
