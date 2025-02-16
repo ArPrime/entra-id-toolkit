@@ -11,14 +11,14 @@ The Exchange Prerequisites Check script (`Exchange2019-PreReqScript-1.19.ps1`) h
 
 ### Features
 
-- Supports both Windows Server 2019 and 2022
+- Supports Windows Server 2019, 2022 and 2025
 - Handles both Core and Full OS installations
 - Verifies and installs prerequisites for:
   - Mailbox Role
   - Edge Transport Role
 - Performs comprehensive system checks including:
   - .NET Framework version verification
-  - Required Windows features
+  - Required Windows features (Note: Web-Lgcy-Mgmt-Console is no longer required for Windows Server 2025)
   - C++ Runtime components
   - UCMA 4.0
   - Power settings
@@ -28,7 +28,7 @@ The Exchange Prerequisites Check script (`Exchange2019-PreReqScript-1.19.ps1`) h
 
 ### Requirements
 
-- Windows Server 2019 or 2022 (Core or Full installation)
+- Windows Server 2019, 2022 or 2025 (Core or Full installation)
 - PowerShell 5.1 or later
 - Administrative privileges
 - Internet connectivity for downloading components
@@ -41,7 +41,7 @@ The Exchange Prerequisites Check script (`Exchange2019-PreReqScript-1.19.ps1`) h
 3. Wait for all components to install
 4. Restart the server when prompted
 
-#### Verifying Existing Installation
+#### Verifying Prerequisites Installation
 1. Run the script
 2. Select option 10 (Mailbox) or 11 (Edge Transport) for prerequisite checks
 3. Review the results
@@ -53,4 +53,8 @@ This script is created and maintained by:
 - **Website**: [PowerShell Geek](https://www.powershellgeek.com/powershell-scripts/)
 - **Version**: 1.19 (Last Update: 07/19/2023)
 
-No modifications have been made to the original script. This folder only provides easy access to the script as part of the Entra Connect tools collection.
+No modifications have been made to the original script except for removing Web-Lgcy-Mgmt-Console requirement for Windows Server 2025 compatibility. This folder only provides easy access to the script as part of the Entra Connect tools collection.
+
+## References
+* [Windows Server 2025 Removed Features](https://learn.microsoft.com/en-us/windows-server/get-started/removed-deprecated-features-windows-server-2025#features-weve-removed-in-this-release)
+* [Exchange Server Prerequisites](https://learn.microsoft.com/en-us/exchange/plan-and-deploy/prerequisites?view=exchserver-2019#exchange-2019-mailbox-servers-on-windows-server-2019--windows-server-2022)
